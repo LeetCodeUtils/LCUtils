@@ -9,8 +9,14 @@ public:
     int val;
     TreeNode *left;
     TreeNode *right;
-    explicit TreeNode(int x, TreeNode *left = nullptr, TreeNode *right = nullptr) : val(x), left(left), right(right) {}
-    explicit TreeNode(std::vector<std::string> arr) : left(nullptr), right(nullptr) {
+
+    explicit TreeNode(int x,
+                      TreeNode *left = nullptr,
+                      TreeNode *right = nullptr) : val(x), left(left),
+                                                   right(right) {}
+
+    explicit TreeNode(std::vector<std::string> arr) : left(nullptr),
+                                                      right(nullptr) {
         if (arr.size() == 0)
             return;
         val = LCConvert<int>(arr[0]);
@@ -18,7 +24,9 @@ public:
     }
 
 private:
-    static void createTree(TreeNode* node, int i, std::vector<std::string>& arr) {
+    static void createTree(TreeNode *node,
+                           int i,
+                           std::vector<std::string> &arr) {
         if (node != nullptr) {
             if (2 * i + 1 < arr.size()) {
                 if (arr[2 * i + 1] == "null")

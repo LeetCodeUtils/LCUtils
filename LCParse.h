@@ -4,7 +4,7 @@
 #include "LCIncludes.h"
 
 template<typename T>
-T LCConvert( const string& s ) {
+T LCConvert(const string &s) {
     T value;
     stringstream convert;
 
@@ -15,7 +15,7 @@ T LCConvert( const string& s ) {
 }
 
 template<>
-string LCConvert<string>( const string& s ) {
+string LCConvert<string>(const string &s) {
     return s;
 }
 
