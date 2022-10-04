@@ -3,20 +3,22 @@
 
 #include "LCIncludes.h"
 
-template<typename T>
-T LCConvert(const string &s) {
-    T value;
-    stringstream convert;
+namespace LC {
 
-    convert << s;
-    convert >> value;
+    template<typename T>
+    T convert(const string &s) {
+        T value;
+        stringstream convert;
 
-    return value;
+        convert << s;
+        convert >> value;
+
+        return value;
+    }
+
+    template<>
+    string convert<string>(const string &s) {
+        return s;
+    }
 }
-
-template<>
-string LCConvert<string>(const string &s) {
-    return s;
-}
-
 #endif //LCUTILS_LCPARSE
