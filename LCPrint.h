@@ -15,12 +15,11 @@ namespace LC {
         print(tail...);
     }
 
-
     template<typename T>
     void print(const vector<vector<T>> &v) {
         for (size_t i = 0; i < v.size(); ++i) {
             for (size_t j = 0; j < v[i].size(); ++j) {
-                cout << v[i][j] << ",\t";
+                cout << v[i][j] << "\t";
             }
             cout << endl;
         }
