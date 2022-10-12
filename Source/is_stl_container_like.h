@@ -4,21 +4,20 @@
 #include <type_traits>
 
 template<typename T>
-struct is_stl_container_like
-{
+struct is_stl_container_like {
     template<typename A>
     static constexpr bool test(
-            A const * cpt,
+            A const *cpt,
             decltype(cpt->begin()) * = nullptr,
             decltype(cpt->end()) * = nullptr,
-            typename A::const_iterator * pci = nullptr,
-            typename A::value_type * pv = nullptr) {
+            typename A::const_iterator *pci = nullptr,
+            typename A::value_type *pv = nullptr) {
 
         typedef typename A::const_iterator const_iterator;
         typedef typename A::value_type value_type;
-        return  std::is_same<decltype(cpt->begin()),const_iterator>::value &&
-                std::is_same<decltype(cpt->end()),const_iterator>::value &&
-                std::is_same<decltype(**pci),value_type const &>::value;
+        return std::is_same<decltype(cpt->begin()), const_iterator>::value &&
+               std::is_same<decltype(cpt->end()), const_iterator>::value &&
+               std::is_same<decltype(**pci), value_type const &>::value;
 
     }
 

@@ -3,6 +3,7 @@
 
 #include "LCIncludes.h"
 #include "../Source/is_stl_container_like.h"
+#include "../Source/is_pair_like.h"
 
 namespace LC {
     namespace Internal {
@@ -23,20 +24,26 @@ namespace LC {
             size_t charCount = existingCharCount;
             string tempDelimiter;
             ([&] {
+                cout << tempDelimiter;
                 if constexpr (is_stl_container_like<Ts>::value) {
-                    cout << tempDelimiter;
                     printContainer(inputs,
                                    delimiter,
                                    containerEOL,
                                    charCount,
                                    containerSpacer);
 
+                } else if constexpr (is_pair_like<Ts>::value) {
+                    cout << "(";
+                    print_internal("", "", "", "", 0, inputs.first);
+                    cout << ", ";
+                    print_internal("", "", "", "", 0, inputs.second);
+                    cout << ")";
                 } else {
-                    stringstream temp;
-                    temp << tempDelimiter << inputs;
-                    temp.seekg(0, ios::end);
-                    charCount += temp.tellg();
-                    cout << tempDelimiter << inputs;
+//                    stringstream temp;
+//                    temp << tempDelimiter << inputs;
+//                    temp.seekg(0, ios::end);
+//                    charCount += temp.tellg();
+                    cout << inputs;
                 }
                 tempDelimiter = delimiter;
             }(), ...);
