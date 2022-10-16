@@ -38,6 +38,8 @@ namespace LC {
                     cout << ", ";
                     print_internal("", "", "", "", 0, inputs.second);
                     cout << ")";
+                } else if constexpr (is_same_v<Ts, bool>) {
+                    cout << (inputs ? "true " : "false");
                 } else {
 //                    stringstream temp;
 //                    temp << tempDelimiter << inputs;
