@@ -25,7 +25,7 @@ namespace LC {
             string tempDelimiter;
             ([&] {
                 cout << tempDelimiter;
-                if constexpr (is_stl_container_like<Ts>::value) {
+                if constexpr (!is_same_v<Ts, string> && is_stl_container_like<Ts>::value) {
                     printContainer(inputs,
                                    delimiter,
                                    containerEOL,
